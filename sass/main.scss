@@ -16,18 +16,25 @@ Grey dark 3: #999
 
 */
 
+
+
+@import 'base';
+@import 'component';
+@import 'layout';
+
+
 *{
     margin:0;
     padding: 0;
 }
 html{
+    font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
     box-sizing: border-box;
+    @media only screen and (max-width: $bp-large) {
+            font-size: 50%;
+    }
 }
 *,*::after,*::before{
     box-sizing: inherit;
-    font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+   
 }
-
-@import 'base';
-@import 'component';
-@import 'layout';

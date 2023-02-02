@@ -17,6 +17,9 @@ Grey dark 3: #999
 */
 
 
+
+
+
 :root{
     --color-primary:#eb2f64;
     --color-primary-light: #FF3366;
@@ -30,8 +33,16 @@ Grey dark 3: #999
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #999;
     --shadow-dark: 0 2rem 6rem rgba(0,0,0,0.3);
+    --shadow-light: 0 2rem 5rem rgba(0,0,0,0.06)
+    --line: 1px solid var(--color-grey-light-2);
 
 }
+$bp-largest: 75em; //1200px
+$bp-medium: 56.25em;// 900px
+$bp-small:37.5em; //600px
+$bp-large: 68.75em; //1200px
+$bp-smallest: 31.25rem; //500px
+
 body{
     font-family: '0pen Sans', sans-serif;
     font-weight: 400;
@@ -41,4 +52,5 @@ body{
     background-repeat: no-repeat;
     color:var(--color-grey-dark-2);
     min-height: 100vh;
+    font-size: 1.4rem;
 }
