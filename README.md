@@ -1,4 +1,4 @@
-Trillo project from css course.
+Trillo project from css course based on using flexboxes.
 In order to run it you have to install live server and sass.
 1. npm i live-server -g
 2. npm i node-sass --save
