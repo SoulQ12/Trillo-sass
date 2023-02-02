@@ -1,0 +1,549 @@
+///////////////////////////////
+/// logo
+
+.logo{
+    height: 3.25rem;
+    margin-left: 2rem;
+}
+
+
+///////////////////////////////
+/// search box
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media only screen and (max-width: $bp-smallest) {
+        order:1; // set the element to be the last
+        flex: 0 0 100%; // width 100% 0 shrink 0 grow
+        background-color: var(--color-grey-light-2);
+        
+      }
+    
+    flex:0 0 40%; // grow, shrink, flex-basis
+    &__input{
+        font-family: inherit;
+        font-size: inherit;
+        background-color: var(--color-grey-light-2);
+        color: inherit;
+        border: none;
+        padding: .7rem 2rem;
+        border-radius: 100px;
+        width:90%;
+        transition: all .2s;
+        margin-right: -3.5rem;
+        &:focus{ 
+            outline: none;
+            width: 100%;
+            background-color: var(--color-grey-light-3);
+        }
+        &::-webkit-input-placeholder{
+            font-weight: 100;
+            color:var(--color-grey-light-4);
+        }
+       
+    }
+    &__input:focus + &_button{
+        background-color: var(--color-grey-light-3);
+    }
+    &__button{
+        border: none;
+        border-color: var(--color-grey-light-2);
+        &:focus{
+            outline:none;
+        }
+        &:active{
+            transform: translateY(2px);
+        }
+    }   
+    &__icon{
+        height: 2rem;
+        width: 2rem;
+        fill: var(--color-grey-dark-3);
+    }
+}
+
+
+
+
+
+
+///////////////////////////////
+/// user navigation
+.user-nav{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    & > *{ // select everything
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    & > *:hover{
+        background-color: var(--color-grey-light-2);
+    }
+    &__icon-box{
+        position: relative;
+    }   
+
+    &__icon{
+        height: 2.25rem;
+        width: 2.25rem;
+        fill: var(--color-grey-dark-2);
+       
+    }
+    &__notification{
+        font-size: .8rem;
+        height: 1.75rem;
+        width:1.75rem;
+        border-radius: 100px;
+        background-color: var(--color-primary);
+        color:white;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   
+    &__user-photo{
+        height: 3.75rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+    } 
+    &__user-name{
+        font-size: 1.2rem;
+    }
+}
+
+//side navigation
+
+.side-nav{
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+    @media only screen and (max-width: $bp-medium) {
+        margin: 0;
+        display: flex;
+    }
+  
+    &__item{
+        position: relative;
+        &:not(:last-child){
+            margin-bottom: .5rem;
+            @media only screen and (max-width: $bp-medium) {
+                margin-bottom: 0;
+            }
+        }
+        @media only screen and (max-width: $bp-medium) {
+            flex:1; // give elements ability to grow to fit content
+        }
+    }
+    &__item:before{ // make small line from which it will transform in item block
+        content: "";
+        position: absolute;
+        top:0;
+        left:0;
+        height: 100%;
+        width: 3px;
+        background-color: var(--color-primary);
+        transform: scale(0);
+        transition: transform .2s,  // // cubic bezier is type of animation
+        width .4s cubic-bezier(1,0,0,1) .2s, background-color .1s;// width will come with delay of .2sec with animation of .4s 
+                                                                        
+    }
+    &__item:hover::before,
+    &__item--active::before{
+        transform: scaleY(1); 
+        width: 100%;
+    }
+    &__item:active::before{
+        background-color: var(--color-primary-light);
+    }
+    &__link,&__link:visited{
+        color:var(--color-grey-light-1);
+        text-decoration: none;
+        text-transform: uppercase;
+        display:block;
+        padding: 1.5rem 3rem;
+        position: relative;
+        font-size: 1.4rem;
+        align-items: center;
+        display: flex;
+        z-index: 10;
+        @media only screen and (max-width: $bp-medium) {
+            justify-content: center;
+            padding: 2rem;
+            
+          }
+          @media only screen and (max-width: $bp-small) {
+        
+            flex-direction: column;
+            padding: 1.5rem .5rem;
+            
+          }
+
+    }
+    &__link:hover{
+        
+    }
+    &__icon{
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 2rem;
+        fill:currentColor;
+        @media only screen and (max-width: $bp-small) {
+        
+           margin-right: 0;
+           width: 1.5rem;
+           height: 1.5rem;
+           margin-bottom: .7px;
+            
+          }
+    }
+}
+
+//legal text
+.legal{
+    font-size: 1.2rem;
+    color: var(--color-grey-light-4);
+    text-align: center;
+    padding: 2.5rem;
+    @media only screen and (max-width: $bp-medium) {
+        display: none;
+    }
+    
+}
+
+// gallery
+.gallery{
+    display: flex;
+    &__photo{ // in responsive design we always want flexible images so we always have to define width and hight in % 
+        width: 100%; 
+        display: block;
+    }
+}
+
+//hotel overview
+.overview{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-grey-light-2);
+    &__heading{
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;
+        @media only screen and (max-width: $bp-small) {
+        
+           font-size: 1.8rem;
+           padding: 1.25rem 2rem;
+            
+          }
+    }
+    &__stars{
+       //flex:1;
+       margin-right: auto; // create space between element without strentching entire element
+        display: flex;
+    }
+    &__icon-star,
+    &__icon-location{
+        width: 1.75rem;
+        height: 1.75rem;
+        fill: var(--color-primary);
+    }
+    &__location{
+        font-size: 1.2rem;
+        
+        display: flex;
+        align-items: center;
+    }
+    &__icon-location{
+        margin-right: 1.5rem;
+    }
+    &__rating{
+        background-color: var(--color-primary);
+        margin-left: 3rem;
+        color:white;
+        align-self: stretch;
+        padding: 0 2.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        @media only screen and (max-width: $bp-small) {
+        
+            
+            padding: 0 1.5rem;
+            
+          }
+    }
+    &__rating-average{
+        font-size: 2.25rem;
+        font-weight: 300;
+        margin-bottom: -3px;
+        @media only screen and (max-width: $bp-small) {
+        
+            font-size: 1.8rem;
+            
+          }
+    }
+    &__rating-count{
+        font-size: .8rem;
+        text-transform: uppercase;
+        @media only screen and (max-width: $bp-small) {
+        
+            font-size: .5rem;
+            
+          }
+    }
+}
+
+// hotel overview
+.btn-inline{
+    border: none;
+    color: var(--color-primary);
+    
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s;
+    &:span{
+        margin-left: 3px;
+        transition: margin-left .2s;
+    }
+    &:hover{
+        color: var(--color-grey-dark-1);
+         span{
+            margin-left:8px;
+        }
+    }
+    &:focus{
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}
+@keyframes pulsate{
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+    50%{
+        transform: scale(1.05);
+        box-shadow: 0 1rem 4rem rgba(0,0,0,.25);
+    }
+    100%{
+        transform: scale(1);
+        box-shadow: none;
+    }
+}
+
+// paragraph
+.paragraph:not(:last-of-type){ // applies only to the same type  in this case its <p>
+    margin-bottom: 2rem;
+}
+
+
+
+// list
+.list{
+     margin: 3rem 0;
+     list-style: none;
+     padding: 3rem 0;
+     border-top: var(--line);
+     border-bottom: var(--line);
+     font-size: 1.4rem;
+
+     display: flex;
+     flex-wrap: wrap; // allow elements to wrap to the new lines, elements are side by syde but in the different rows
+
+     &__item{
+        flex:0 0 50%; // give elements container of 50% so only 2 items are in the row
+        margin-bottom: .7rem;
+
+     }
+     &__item::before{
+        content: "";
+        display: inline-block;
+        height: 2rem;
+        width: 2rem;
+        margin-right: .7rem;
+        //older browsers default option
+        background-image: url(../img/chevron-thin-right.svg); // > icon
+        background-size: cover;
+        // newer browsers - masks
+        @supports (-webkit-mask-image: url()) or (mask-image:url()){ // if browser support this > svg will become pink color
+            background-color: var(--color-primary);
+            mask-image: url(../img/chevron-thin-right.svg);
+            -webkit-mask-image: url(../img/chevron-thin-right.svg);
+            mask-size: cover;
+            -webkit-mask-size: cover;
+            background-image: none;
+        }
+       
+     }
+}
+
+
+// recommend
+
+.recommend{
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+    display: flex;
+    align-items: center;
+
+    &__count{
+        margin-right: auto; // creates automaticly margin to push all the elements to the right side of the other div
+    }
+    &__friends{
+        display: flex;
+    }
+    &__photo{
+        box-sizing: content-box; // we set it default so the border doesnt eat pixels inside of the element, because we defined for every element box-sizing:border-box, but we dont want it here
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid white;
+        &:not(:last-child){
+            margin-right: -2rem;
+        }
+    }
+}
+
+// reviews
+
+.review{
+    background-color: white;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    font-size: 1.4rem;
+    position: relative;
+    margin-bottom: 3.5rem;
+    overflow: hidden;
+    @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        
+      }
+    &__text{
+        display: flex;
+        flex-wrap: wrap;
+        font-weight: 600;
+        z-index: 10;
+        position: relative; // always set position if use z-index
+    }
+    &__user{
+        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+    &__photo{
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+    &__user-box{
+        font-size: 1.4rem;
+        margin-right: auto;
+    }
+    &__user-name{
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
+    }
+    &__user-date{
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--color-grey-dark-3)
+    }
+    &__rating{
+        font-size: 2.2rem;
+        color: var(--color-primary);
+    }
+
+    &::before{
+        content: "\201C"; // symbol code
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 20rem;
+        color:var(--color-grey-light-2);
+        font-family: sans-serif;
+        z-index: 1;
+
+    }
+}
+
+//call to action
+.cta{
+    padding: 3.5rem 0;
+    text-align: center;
+    @media only screen and (max-width: $bp-medium) {
+        
+        padding: 2.5rem 0;
+        
+      }
+    
+
+    &__book-now{
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+    }
+}
+
+//call to action
+
+.btn{ // we set position of invisable button -100% and overflod hidden so we dont see it, on hover they change places with visable
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border:none;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color:white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    
+    &__visable{
+        display: inline-block;
+        padding: 2rem 7.5rem;
+        height: 100%;
+        width: 100%;
+    }
+    &__invisable{
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -100%;
+        padding: 2rem 0;
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+    }
+    &:hover{
+        background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+    }
+    &:hover &__visable{
+    
+        transform: translateY(100%);
+    }
+    &:hover &__invisable{
+        top: 0;
+    }
+    &:focus{
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+}
