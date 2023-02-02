@@ -1,2 +1,0 @@
-# Trillo
-Trillo project 
