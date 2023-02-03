@@ -1,7 +1,7 @@
 {
   "name": "trillo",
   "version": "1.0.0",
-  "description": "Landing page for natours",
+  "description": "trillo",
   "main": "index.js",
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
