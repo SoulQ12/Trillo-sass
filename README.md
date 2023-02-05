@@ -1,4 +1,4 @@
-# Trillo project from css course based on using flexboxes.
+# Trillo project from css course based on using flexboxes. Second practice project.
 # In order to run it you have to install sass.
 1) npm i node-sass --save
 
