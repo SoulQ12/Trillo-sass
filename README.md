@@ -6,4 +6,4 @@
 # You may also install live-server and run with it.
 1) npm i live-server -g
 
-2) npm run start
+2) npm run devserver
